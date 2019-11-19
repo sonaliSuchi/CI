@@ -32,10 +32,7 @@ pipeline {
 			{
 			echo 'Skipping Testcases'
 			}
-			else
-			{
-			echo 'Using testcase'
-			}
+			
 		}
       }
     }
@@ -44,6 +41,13 @@ pipeline {
       steps {
         // Static Code analysis (Coverity/ SonarQube /openvas/Nessus etc.)
 		echo 'Code Analysis'
+		script{
+			if("${params.SKIP_ANALYSIS}")
+			{
+			echo 'Skipping SonarQube Code Analysis'
+			}
+			
+		}
       }
     }
 
