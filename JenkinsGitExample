@@ -4,6 +4,13 @@ pipeline {
     gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH_SELECTOR', type: 'PT_BRANCH', useRepository: '.*CI.git'
   }
   stages {
+   stage('Clean Workspace') {
+      steps {
+        // Clean the workspace
+		echo 'Clean workspace'
+      }
+    }
+
     stage('Checkout') {
       steps {
         git branch: "${params.BRANCH_SELECTOR}", credentialsId: '62bb76d6-c3c8-42a1-8838-978511d17bce', url: 'https://github.com/sonaliSuchi/CI.git'
@@ -17,6 +24,41 @@ pipeline {
 		 bat 'mvn -version'
       }
     }
+	stage('Test') {
+      steps {
+        // Test (Unit test / Automation test(Selenium/Robot framework) / etc.)
+		echo 'Testcases'
+      }
+    }
+
+    stage('Code Analysis') {
+      steps {
+        // Static Code analysis (Coverity/ SonarQube /openvas/Nessus etc.)
+		echo 'Code Analysis'
+      }
+    }
+
+    stage('Generate Release Notes') {
+      steps {
+        // Release note generation .
+		echo 'Generate release note' 
+      }
+    }
+
+    stage('Tagging') {
+      steps {
+        // Tagging specific version number
+		echo 'Tagging'
+      }
+    }
+
+    stage('Release') {
+      steps {
+        // release specific versions(Snapshot / release / etc.)
+		echo 'release specific version'
+      }
+    }
+
 	stage('Deploy')
     {
 				
