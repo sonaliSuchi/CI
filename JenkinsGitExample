@@ -1,0 +1,13 @@
+pipeline {
+  agent any
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH_SELECTOR', type: 'PT_BRANCH'
+  }
+  stages {
+    stage('Example') {
+      steps {
+        git branch: "${params.BRANCH_SELECTOR}", credentialsId: '62bb76d6-c3c8-42a1-8838-978511d17bce', url: 'https://github.com/sonaliSuchi/CI.git'
+      }
+    }
+  }
+}
