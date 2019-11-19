@@ -27,7 +27,14 @@ pipeline {
 	stage('Test') {
       steps {
         // Test (Unit test / Automation test(Selenium/Robot framework) / etc.)
+		if(${params.SKIP_TEST})
+		{
 		echo 'Testcases'
+		}
+		else
+		{
+		echo 'no testcase'
+		}
       }
     }
 
