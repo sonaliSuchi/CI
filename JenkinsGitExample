@@ -28,13 +28,13 @@ pipeline {
       steps {
         // Test (Unit test / Automation test(Selenium/Robot framework) / etc.)
 		script{
-			if(true)
+			if("${params.SKIP_TEST}")
 			{
-			echo 'Testcases'
+			echo 'Skipping Testcases'
 			}
 			else
 			{
-			echo 'no testcase'
+			echo 'Using testcase'
 			}
 		}
       }
