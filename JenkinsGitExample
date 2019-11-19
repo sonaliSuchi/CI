@@ -27,13 +27,15 @@ pipeline {
 	stage('Test') {
       steps {
         // Test (Unit test / Automation test(Selenium/Robot framework) / etc.)
-		if(true)
-		{
-		echo 'Testcases'
-		}
-		else
-		{
-		echo 'no testcase'
+		script{
+			if(true)
+			{
+			echo 'Testcases'
+			}
+			else
+			{
+			echo 'no testcase'
+			}
 		}
       }
     }
